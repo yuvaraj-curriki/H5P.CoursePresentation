@@ -72,6 +72,7 @@ let CoursePresentation = function (params, id, extras) {
     shareFacebook: 'Share on Facebook',
     shareTwitter: 'Share on Twitter',
     shareGoogle: 'Share on Google+',
+    submitResult : 'Submit Answers',
     goToSlide: 'Go to slide :num',
     solutionsButtonTitle: 'Show comments',
     printTitle: 'Print',
@@ -1899,6 +1900,8 @@ CoursePresentation.prototype.resetTask = function () {
         if (elementInstance.resetTask) {
           elementInstance.resetTask();
         }
+        H5P.jQuery('.h5p-show-solutions').show(); 
+		    H5P.jQuery(".h5p-summary-footer").removeClass("h5p-custom-summary-msg");
       }
     }
   }

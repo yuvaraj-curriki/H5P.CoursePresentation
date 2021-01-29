@@ -96,6 +96,54 @@ const SummarySlide = (function () {
     // Button container ref
     var $summaryFooter = $('.h5p-summary-footer', that.$summarySlide);
 
+    JoubelUI.createButton({
+      'class': 'h5p-show-solutions',
+      html: that.cp.l10n.submitResult,
+      on: {
+        click: function () {
+          var customTotalScore = 0;
+          var customTotalMaxScore = 0;
+          for (var custom_i = 0; custom_i < slideScores.length; custom_i += 1) {
+              customTotalScore += slideScores[custom_i].score;
+              customTotalMaxScore += slideScores[custom_i].maxScore; 
+          }
+            
+          if( typeof that.cp.parent == "undefined"){
+            that.cp.triggerXAPIScored(customTotalScore, customTotalMaxScore, 'submitted-curriki');
+          }
+					
+          that.cp.slidesWithSolutions.forEach(function (e,i) {
+            e.forEach(function(gg,qq){
+                if(typeof gg.getAnswerGiven === "function" && !gg.getAnswerGiven()) { 
+                    that.cp.triggerXAPIScored(customTotalScore, customTotalMaxScore, 'skipped');
+                }else if(typeof gg.getAnswerGiven == 'undefined'  ) {
+                    var flag = 0;
+                    gg.interactions.forEach(function(pp,mm){ 
+                        console.log(pp.getLastXAPIVerb());
+                        if(pp.getLastXAPIVerb() !== undefined) {
+                            flag = 1;
+                        }
+                    })
+                  if(flag == 0) {  
+                    that.cp.triggerXAPIScored(customTotalScore, customTotalMaxScore, 'skipped');
+                  }
+
+                }
+              })
+                                            
+          })
+          H5P.jQuery('.h5p-show-solutions').hide();
+          var custom_msg = document.createElement("div");
+          custom_msg.innerHTML =  '<p style="font-weight: bold; margin: 0;font-size: 0.875rem;color: #0e8275;">Your answers are submitted for review!</p>';
+          
+          H5P.jQuery(custom_msg).prependTo(".h5p-summary-footer");
+          H5P.jQuery(".h5p-summary-footer").addClass("h5p-custom-summary-msg");
+        }
+      },
+      appendTo: $summaryFooter
+    });
+
+    
     // Show solutions button
     if (this.cp.showSummarySlideSolutionButton) {
       JoubelUI.createButton({
@@ -189,6 +237,7 @@ const SummarySlide = (function () {
     }
 
     that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
+    
     var shareResultContainer = (that.cp.enableTwitterShare || that.cp.enableFacebookShare || that.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' : '';
     var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>': '';
     var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>': '';

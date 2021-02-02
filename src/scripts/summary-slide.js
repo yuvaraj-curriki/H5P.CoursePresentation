@@ -132,12 +132,17 @@ const SummarySlide = (function () {
               })
                                             
           })
-          H5P.jQuery('.h5p-show-solutions').hide();
-          var custom_msg = document.createElement("div");
-          custom_msg.innerHTML =  '<p style="font-weight: bold; margin: 0;font-size: 0.875rem;color: #0e8275;">Your answers are submitted for review!</p>';
+
+          //if ( !$( "#customMessageDiv" ).length ) {
+            H5P.jQuery('.h5p-show-solutions').hide();
+            var custom_msg = document.createElement("div");
+            custom_msg.setAttribute("id", "customMessageDiv");
+            custom_msg.innerHTML =  '<p style="font-weight: bold; margin: 0;font-size: 0.875rem;color: #0e8275;">Your answers are submitted for review!</p>';
+            
+            H5P.jQuery(custom_msg).prependTo($summaryFooter);
+            H5P.jQuery(".h5p-summary-footer").addClass("h5p-custom-summary-msg");
+          //}
           
-          H5P.jQuery(custom_msg).prependTo(".h5p-summary-footer");
-          H5P.jQuery(".h5p-summary-footer").addClass("h5p-custom-summary-msg");
         }
       },
       appendTo: $summaryFooter

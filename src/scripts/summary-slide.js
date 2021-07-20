@@ -108,7 +108,7 @@ const SummarySlide = (function () {
               customTotalMaxScore += slideScores[custom_i].maxScore; 
           }
             
-          if( typeof that.cp.parent == "undefined"){
+          if(typeof that.cp.parent == "undefined"){
             that.cp.triggerXAPIScored(customTotalScore, customTotalMaxScore, 'submitted-curriki');
           }
 					

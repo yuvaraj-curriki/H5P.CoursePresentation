@@ -22,10 +22,10 @@
 
 /* Summary header */
 .h5p-course-presentation .h5p-score-message {
-  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -ms-flexbox;      /* TWEENER - IE 10 */
-  display: -webkit-flex;     /* NEW - Chrome */
-  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -205,19 +205,19 @@
 }
 
 .h5p-course-presentation .h5p-summary-twitter-message:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: "H5PFontAwesome4";
   content: "\f099";
   padding-right: 0.5em;
 }
 
 .h5p-course-presentation .h5p-summary-facebook-message:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: "H5PFontAwesome4";
   content: "\f09a";
   padding-right: 0.5em;
 }
 
 .h5p-course-presentation .h5p-summary-google-message:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: "H5PFontAwesome4";
   content: "\f0d5";
   padding-right: 0.5em;
 }
@@ -225,19 +225,34 @@
 /* --------------------------------- Button styling ----------------------------------------------- */
 
 .h5p-course-presentation .h5p-summary-slide .h5p-eta-export:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: "H5PFontAwesome4";
   content: "\f0f6";
   margin-right: 0.5em;
 }
 
 .h5p-course-presentation .h5p-summary-slide .h5p-show-solutions:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: "H5PFontAwesome4";
   content: "\f06e";
   margin-right: 0.5em;
 }
 
 .h5p-course-presentation .h5p-summary-slide .h5p-cp-retry-button:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: "H5PFontAwesome4";
   content: "\f021";
   margin-right: 0.5em;
+}
+
+.h5p-custom-summary-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d3ede9;
+  padding: 15px;
+  bottom: 10px;
+  position: absolute;
+  width: 90%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  border-radius: 4px;
 }

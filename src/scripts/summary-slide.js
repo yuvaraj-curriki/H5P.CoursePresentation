@@ -134,13 +134,16 @@ const SummarySlide = (function () {
           })
 
           //if ( !$( "#customMessageDiv" ).length ) {
-            H5P.jQuery('.h5p-show-solutions').hide();
+            //H5P.jQuery('.h5p-show-solutions').hide();
+            //H5P.jQuery(this).closest('.h5p-show-solutions').hide();
+            H5P.jQuery(this).parent().children('.h5p-show-solutions').hide();
             var custom_msg = document.createElement("div");
             custom_msg.setAttribute("id", "customMessageDiv");
             custom_msg.innerHTML =  '<p style="font-weight: bold; margin: 0;font-size: 0.875rem;color: #0e8275;">Your answers are submitted for review!</p>';
             
             H5P.jQuery(custom_msg).prependTo($summaryFooter);
-            H5P.jQuery(".h5p-summary-footer").addClass("h5p-custom-summary-msg");
+            H5P.jQuery(this).parent().addClass("h5p-custom-summary-msg");
+            //H5P.jQuery(".h5p-summary-footer").addClass("h5p-custom-summary-msg");
           //}
           
         }
@@ -171,6 +174,8 @@ const SummarySlide = (function () {
         html: that.cp.l10n.retry,
         on: {
           click: function () {
+            H5P.jQuery(this).parent().children('.h5p-show-solutions').show();
+		        H5P.jQuery(this).parent().removeClass("h5p-custom-summary-msg");
             that.cp.resetTask();
             // event.preventDefault();
           }

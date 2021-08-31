@@ -1900,8 +1900,8 @@ CoursePresentation.prototype.resetTask = function () {
         if (elementInstance.resetTask) {
           elementInstance.resetTask();
         }
-        H5P.jQuery('.h5p-show-solutions').show(); 
-		    H5P.jQuery(".h5p-summary-footer").removeClass("h5p-custom-summary-msg");
+        //H5P.jQuery('.h5p-show-solutions').show(); 
+		    //H5P.jQuery(".h5p-summary-footer").removeClass("h5p-custom-summary-msg");
       }
     }
   }

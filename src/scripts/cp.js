@@ -1708,10 +1708,6 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     var progressedEvent = this.createXAPIEventTemplate('progressed');
     progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = slideNumber + 1;
     this.trigger(progressedEvent);
-
-    if (this.hideSummarySlide && slideNumber === this.slides.length-1) {
-      this.triggerComplete();
-    }
   }
 
   if (this.$current.hasClass('h5p-animate')) {
@@ -1836,6 +1832,11 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
 
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
+
+  if (this.hideSummarySlide && slideNumber === this.slides.length-1) {
+    this.triggerComplete();
+  }
+  
   return true;
 };
 

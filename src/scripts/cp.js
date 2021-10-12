@@ -1832,6 +1832,11 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
 
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
+
+  if (this.hideSummarySlide && slideNumber === this.slides.length-1) {
+    this.triggerComplete();
+  }
+  
   return true;
 };
 
@@ -2146,5 +2151,24 @@ CoursePresentation.prototype.getXAPIData = function () {
     children: childrenXAPIData
   };
 };
+
+/**
+ * Trigger completed statement for the presentation
+ */
+CoursePresentation.prototype.triggerComplete = function () {
+  let scores = this.getSlideScores();
+  let totalScore = 0;
+  let totalMaxScore = 0;
+
+  if (scores) {
+    for (let i = 0; i < scores.length; i += 1) {
+      totalScore += scores[i].score;
+      totalMaxScore += scores[i].maxScore;
+    }
+  }
+  
+  this.triggerXAPICompleted(totalScore, totalMaxScore);
+};
+
 
 export default CoursePresentation;

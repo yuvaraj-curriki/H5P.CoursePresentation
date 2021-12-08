@@ -1991,11 +1991,34 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
       var indexes = [];
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
         var elementInstance = this.slidesWithSolutions[i][j];
+       
         if (elementInstance.getMaxScore !== undefined) {
+          // console.log(elementInstance);
           slideMaxScore += elementInstance.getMaxScore();
           slideScore += elementInstance.getScore();
           hasScores = true;
           indexes.push(elementInstance.coursePresentationIndexOnSlide);
+          ////customization
+         // console.log(elementInstance.getMaxScore());
+          if(this.previousState && this.previousState != undefined)
+          {
+            if(this.previousState.answers)
+            {
+              //const scores_list = this.previousState.answers;
+              //for (var k = 0; k < scores_list.length; k++) {
+                if(this.previousState.answers[i][0] != undefined && slideScore == 0 && this.previousState.answers[i][0]['score'])
+                {
+                  for (var l = 0; l <  this.previousState.answers[i][0]['score'].length; l++) {
+                    //console.log(this.previousState.answers);
+                    slideScore += this.previousState.answers[i][0]['score'][l];
+                    //slideMaxScore += this.previousState.answers[i][0]['maxScore'][l];
+                  }
+                }  
+              //}
+            } 
+          }
+          /////////
+          //console.log(slideMaxScore);
         }
       }
       slideScores.push({
@@ -2007,6 +2030,7 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
     }
   }
   if (hasScores) {
+    console.log(slideScores);
     return slideScores;
   }
 };
@@ -2128,7 +2152,7 @@ CoursePresentation.prototype.pauseMedia = function (instance) {
  */
 CoursePresentation.prototype.getXAPIData = function () {
   var xAPIEvent = this.createXAPIEventTemplate('answered');
-
+  console.log("dabc abc");
   // Extend definition
   var definition = xAPIEvent.getVerifiedStatementValue(['object', 'definition']);
   H5P.jQuery.extend(definition, {

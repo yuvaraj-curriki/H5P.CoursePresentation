@@ -2011,7 +2011,7 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
                   for (var l = 0; l <  this.previousState.answers[i][0]['score'].length; l++) {
                     //console.log(this.previousState.answers);
                     slideScore += this.previousState.answers[i][0]['score'][l];
-                    //slideMaxScore += this.previousState.answers[i][0]['maxScore'][l];
+                    slideMaxScore += this.previousState.answers[i][0]['maxScore'][l];
                   }
                 }  
               //}

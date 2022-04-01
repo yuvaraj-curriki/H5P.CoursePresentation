@@ -26,8 +26,9 @@ export default class GoToSlide {
    * @param {string} goToSlideType
    * @param {object} l10n
    * @param {number} currentIndex
+   * @param {object} parent
    */
-  constructor({ title, goToSlide = 1, invisible, goToSlideType  = navigationType.SPECIFIED }, { l10n, currentIndex }) {
+  constructor({ title, goToSlide = 1, invisible, goToSlideType  = navigationType.SPECIFIED }, { l10n, currentIndex, parent }) {
     this.eventDispatcher = new EventDispatcher();
     let classes = 'h5p-press-to-go';
     let tabindex = 0;
@@ -74,6 +75,7 @@ export default class GoToSlide {
     });
 
     addClickAndKeyboardListeners(this.$element, event => {
+      this.triggerXAPIConsumed(title, parent);
       this.eventDispatcher.trigger('navigate', goTo);
       event.preventDefault();
     });
@@ -98,4 +100,30 @@ export default class GoToSlide {
   on(name, callback) {
     this.eventDispatcher.on(name, callback);
   }
+
+
+  /**
+   * Trigger the 'consumed' xAPI event
+   *
+   */
+  triggerXAPIConsumed(title, parent) {
+    var xAPIEvent = parent.parent.createXAPIEventTemplate({
+      id: 'http://activitystrea.ms/schema/1.0/consume',
+      display: {
+        'en-US': 'consumed'
+      }
+    }, {
+      result: {
+        completion: true
+      }
+    });
+
+    Object.assign(xAPIEvent.data.statement.object.definition, {
+      name: {
+        'en-US': title || 'Go To slide'
+      }
+    });
+
+    parent.parent.trigger(xAPIEvent);
+  };
 }

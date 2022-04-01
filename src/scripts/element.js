@@ -10,7 +10,8 @@ function Element(parameters) {
     // goToSlide, internal element
     self.instance = new GoToSlide(parameters, {
       l10n: self.parent.parent.l10n,
-      currentIndex: self.parent.index
+      currentIndex: self.parent.index,
+      parent: self.parent
     });
 
     if (!self.parent.parent.isEditor()) {

@@ -1044,6 +1044,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     label = (element.action.params && element.action.params.contentName) || element.action.library.split(' ')[0].split('.')[1];
   }
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
+  const libName = this.getLibraryName(element.action.library);
 
   /**
    * Returns a function that will set [aria-expanded="false"] on the $btn element
@@ -1073,6 +1074,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     $button.attr('aria-expanded', 'true');
     this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button), parentPosition);
     this.disableTabIndexes(); // Disable tabs behind overlay
+    this.triggerConsumedEventForReadOnly(libName, instance);
   });
 
   if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
@@ -1155,6 +1157,15 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
  * @return {string}
  */
 CoursePresentation.prototype.getLibraryTypePmz = library => kebabCase(library.split(' ')[0]).toLowerCase();
+
+
+/**
+ * Returns the name part of a library string
+ *
+ * @param {string} library
+ * @return {string}
+ */
+CoursePresentation.prototype.getLibraryName = library => library.split(' ')[0];
 
 /**
  * Resize image inside popup dialog.
@@ -1758,6 +1769,22 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
     that.trigger('changedSlide', that.$current.index());
+
+    // trigger consumed event for read only libraries to record xapi in that library
+    const currentIndex = that.$current.index();
+    const slide = that.slides[currentIndex];
+    const instances = that.elementInstances[currentIndex];
+    if (instances !== undefined) {
+      for (var i = 0; i < instances.length; i++) {
+        if (!slide.elements[i].displayAsButton) {
+          const element = slide.elements[i];
+          const hasLibrary = element.action && element.action.library;
+          const libName = hasLibrary ? that.getLibraryName(element.action.library) : 'other';
+          that.triggerConsumedEventForReadOnly(libName, instances[i]);
+        }
+      }
+    }
+
   }, 1);
 
   setTimeout(function () {
@@ -2192,6 +2219,13 @@ CoursePresentation.prototype.triggerComplete = function () {
   }
   
   this.triggerXAPICompleted(totalScore, totalMaxScore);
+};
+
+CoursePresentation.prototype.triggerConsumedEventForReadOnly = function (library, instance) {
+  const readOnlyLibraries = ['H5P.AdvancedText', 'H5P.Image', 'H5P.Shape', 'H5P.Table'];
+  if(this.editor === undefined && readOnlyLibraries.includes(library)) {
+    instance.trigger('trigger-consumed');
+  }
 };
 
 

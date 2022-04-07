@@ -422,6 +422,8 @@ CoursePresentation.prototype.attach = function ($container) {
 
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
+  } else if(this.currentSlideIndex === 0) { // handle read only activities XAPI event for initial load
+      this.handleConsumedEventForReadOnly(this.currentSlideIndex);
   }
 };
 
@@ -1772,18 +1774,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
 
     // trigger consumed event for read only libraries to record xapi in that library
     const currentIndex = that.$current.index();
-    const slide = that.slides[currentIndex];
-    const instances = that.elementInstances[currentIndex];
-    if (instances !== undefined) {
-      for (var i = 0; i < instances.length; i++) {
-        if (!slide.elements[i].displayAsButton) {
-          const element = slide.elements[i];
-          const hasLibrary = element.action && element.action.library;
-          const libName = hasLibrary ? that.getLibraryName(element.action.library) : 'other';
-          that.triggerConsumedEventForReadOnly(libName, instances[i]);
-        }
-      }
-    }
+    that.handleConsumedEventForReadOnly(currentIndex);
 
   }, 1);
 
@@ -1865,6 +1856,22 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
   }
   
   return true;
+};
+
+
+CoursePresentation.prototype.handleConsumedEventForReadOnly = function(currentIndex) {
+    const slide = this.slides[currentIndex];
+    const instances = this.elementInstances[currentIndex];
+    if (instances !== undefined) {
+        for (var i = 0; i < instances.length; i++) {
+            if (!slide.elements[i].displayAsButton) {
+                const element = slide.elements[i];
+                const hasLibrary = element.action && element.action.library;
+                const libName = hasLibrary ? this.getLibraryName(element.action.library) : 'other';
+                this.triggerConsumedEventForReadOnly(libName, instances[i]);
+            }
+        }
+    }
 };
 
 /**

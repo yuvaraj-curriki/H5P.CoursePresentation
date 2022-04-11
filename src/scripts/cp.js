@@ -2229,7 +2229,7 @@ CoursePresentation.prototype.triggerComplete = function () {
 };
 
 CoursePresentation.prototype.triggerConsumedEventForReadOnly = function (library, instance) {
-  const readOnlyLibraries = ['H5P.AdvancedText', 'H5P.Image', 'H5P.Shape', 'H5P.Table'];
+  const readOnlyLibraries = ['H5P.AdvancedText', 'H5P.Image', 'H5P.Shape', 'H5P.Table', 'H5P.Video'];
   if(this.editor === undefined && readOnlyLibraries.includes(library)) {
     instance.trigger('trigger-consumed');
   }

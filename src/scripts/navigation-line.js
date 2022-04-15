@@ -59,6 +59,9 @@ const NavigationLine = (function ($) {
               event.setVerb('answered');
             }
 
+            if (event.data.statement.context === undefined) {
+              event.data.statement.context = {};
+            }
             if (event.data.statement.context.extensions === undefined) {
               event.data.statement.context.extensions = {};
             }

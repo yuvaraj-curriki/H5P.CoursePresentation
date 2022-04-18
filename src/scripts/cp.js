@@ -2229,7 +2229,7 @@ CoursePresentation.prototype.triggerComplete = function () {
 };
 
 CoursePresentation.prototype.triggerConsumedEventForReadOnly = function (library, instance) {
-  const readOnlyLibraries = ['H5P.AdvancedText', 'H5P.Image', 'H5P.Shape', 'H5P.Table', 'H5P.Video'];
+  const readOnlyLibraries = ['H5P.AdvancedText', 'H5P.Image', 'H5P.Shape', 'H5P.Table', 'H5P.Video','H5P.ContinuousText','H5P.ExportableTextArea', 'H5P.TwitterUserFeed'];
   if(this.editor === undefined && readOnlyLibraries.includes(library)) {
     instance.trigger('trigger-consumed');
   }

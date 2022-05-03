@@ -59,6 +59,12 @@ const NavigationLine = (function ($) {
               event.setVerb('answered');
             }
 
+            // handle CP > IV task progress
+            if (interaction.libraryInfo && interaction.libraryInfo.machineName === 'H5P.InteractiveVideo' && shortVerb === 'completed') {
+              const isAnswered = this.cp.slideHasAnsweredTask(index);
+              this.setTaskAnswered(index, isAnswered);
+            }
+
             if (event.data.statement.context === undefined) {
               event.data.statement.context = {};
             }

@@ -242,13 +242,16 @@ const SummarySlide = (function () {
         '</tr>';
     }
 
-    that.cp.triggerComplete();
-    
+    if (!this.cp.isSolutionMode) {
+      // that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
+    }
     var shareResultContainer = (that.cp.enableTwitterShare || that.cp.enableFacebookShare || that.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' : '';
     var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>': '';
     var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>': '';
     var googleContainer = (that.cp.enableGoogleShare == true) ? '<span class="h5p-summary-google-message" aria-label="' + that.cp.l10n.shareGoogle + '"></span>' : '';
-
+  
+    console.log(that.cp.l10n);
+    console.log(that.cp);
     var html =
       '<div class="h5p-summary-table-holder">' +
         '<div class="h5p-summary-table-pages">' +

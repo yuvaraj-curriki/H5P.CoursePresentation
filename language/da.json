@@ -73,8 +73,7 @@
                     "description": "Baggrundsbilleder skal have forholdet bredde/højde 2:1 for at undgå at de strækkes. Billeder i høj opløsing vil vises bedst på en stor skærm."
                   },
                   {
-                    "label": "Valg af farve",
-                    "default": ""
+                    "label": "Valg af farve"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Baggrundsbilleder skal have forholdet bredde/højde 2:1 for at undgå at de strækkes. Billeder i høj opløsing vil vises bedst på en stor skærm."
             },
             {
-              "label": "Valg af farve",
-              "default": ""
+              "label": "Valg af farve"
             }
           ]
         }
@@ -117,27 +115,27 @@
         },
         {
           "label": "Translation for \"Score\"",
-          "default": "Score"
+          "default": "Point"
         },
         {
           "label": "Oversættelse for \"Dit resultat\"",
-          "default": "Dit resultat"
+          "default": "Dine point"
         },
         {
           "label": "OVersættelse for \"Højeste score\"",
-          "default": "Højeste Score"
+          "default": "Mulige point"
         },
         {
           "label": "Translation for \"Total\"",
-          "default": "Total"
+          "default": "I alt"
         },
         {
           "label": "Translation for \"Total Score\"",
-          "default": "Total Score"
+          "default": "Samlede point"
         },
         {
           "label": "Titel vist på 'Vis svar' knap",
-          "default": "Vis svar"
+          "default": "Vis løsning"
         },
         {
           "label": "Tekst for 'prøv igen' knap",
@@ -145,23 +143,23 @@
         },
         {
           "label": "Tekst på 'eksporter som tekst' knap",
-          "default": "Eksporter som tekst"
+          "default": "Eksporter tekst"
         },
         {
           "label": "Titel på 'Skjul liste' med nøgleord knap",
-          "default": "Skjul liste med nøgleord"
+          "default": "Skjul sidemenu"
         },
         {
           "label": "Titel på 'Vis liste med nøgleord' knap.",
-          "default": "Vis liste med nøgleord"
+          "default": "Vis sidemenu"
         },
         {
           "label": "Fuldskærms titel",
-          "default": "Fuldskærm"
+          "default": "Fuld skærm"
         },
         {
           "label": "Afslut fuldskærm titel",
-          "default": "Afslut fuldskærm"
+          "default": "Afslut fuld skærm"
         },
         {
           "label": "Forrige slide titel titel",
@@ -173,7 +171,7 @@
         },
         {
           "label": "Aktuelt slide titel",
-          "default": "Aktuelt slide"
+          "default": "Dette slide"
         },
         {
           "label": "Sidste slide titel",
@@ -181,19 +179,19 @@
         },
         {
           "label": "Afslut besvarelse tekst",
-          "default": "Afslut besvarelse"
+          "default": "Afslut løsningsvisning"
         },
         {
           "label": "Svar mode tekst",
-          "default": "Svar mode"
+          "default": "Løsningsvisning"
         },
         {
           "label": "Tekst når siden indeholder multiple choice opgave",
-          "default": "Multiple choice opgave"
+          "default": "Flere opgaver"
         },
         {
           "label": "Tekst på besked med resultat",
-          "default": "Du opnåede:"
+          "default": "Du fik:"
         },
         {
           "label": "Del på Facebook tekst",
@@ -209,11 +207,11 @@
         },
         {
           "label": "Titel på resume slide",
-          "default": "Resumé"
+          "default": "Resultat"
         },
         {
           "label": "Titel på kommentar icon",
-          "default": "Vis kommentar"
+          "default": "Vis kommentarer"
         },
         {
           "label": "Titel på print knap",
@@ -229,11 +227,11 @@
         },
         {
           "label": "tekst på \"Print aktuelt slide\" knap",
-          "default": "Print aktielt slide"
+          "default": "Print dette slide"
         },
         {
           "label": "Label for slides without a title",
-          "default": "No title"
+          "default": "Ingen titel"
         },
         {
           "label": "Explanation of slide navigation for assistive technologies",
@@ -279,6 +277,18 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Exited fullscreen"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Send besvarelse"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "Du er ved at sende din besvarelse, vil du fortsætte?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Send besvarelse og se resultat"
         }
       ]
     },

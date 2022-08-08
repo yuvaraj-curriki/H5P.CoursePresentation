@@ -73,8 +73,7 @@
                     "description": "Das Hintergrundbild sollte ein Seitenverhältnis von 2:1 haben, um Verzerrungen zu vermeiden. Hochauflösende Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
                   },
                   {
-                    "label": "Wähle eine Farbe",
-                    "default": ""
+                    "label": "Wähle eine Farbe"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Das Hintergrundbild sollte ein Seitenverhältnis von 2:1 haben, um Verzerrungen zu vermeiden. Hochauflösende Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
             },
             {
-              "label": "Wähle eine Farbe",
-              "default": ""
+              "label": "Wähle eine Farbe"
             }
           ]
         }
@@ -220,7 +218,7 @@
           "default": "Drucken"
         },
         {
-          "label": "Überschrift des Druck-Dialogs",
+          "label": "Zugriff auf Druck-Dialog",
           "default": "Wie möchtest du diese Präsentation drucken?"
         },
         {
@@ -279,6 +277,18 @@
         {
           "label": "\"Vollbild deaktiviert\"-Hinweis für Vorlesewerkzeuge",
           "default": "Vollbild deaktiviert"
+        },
+        {
+          "label": "Überschrift des Bestätigungsdialogs für das Senden des Ergebnisses",
+          "default": "Antworten übermitteln"
+        },
+        {
+          "label": "Text des Bestätigungsdialogs für das Senden des Ergebnisses",
+          "default": "Damit werden deine Ergebnisse übermittelt. Möchtest du fortfahren?"
+        },
+        {
+          "label": "Bestätigungs-Button des Bestätigungsdialogfelds für das Senden des Ergebnisses",
+          "default": "Senden und Ergebnisse ansehen"
         }
       ]
     },

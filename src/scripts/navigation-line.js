@@ -209,19 +209,21 @@ const NavigationLine = (function ($) {
    * @param {number} index
    */
   NavigationLine.prototype.displaySlide = function (index) {
-    const oldIndex = this.cp.getCurrentSlideIndex();
-
-    // update current progress task
-    this.updateSlideTitle(index, { isCurrent: true });
-
-    // update old progress task
-    this.updateSlideTitle(oldIndex, { isCurrent: false });
+    const self = this;
 
     // navigate to slide
-    this.cp.jumpToSlide(index);
+    this.cp.jumpToSlide(index, false, function () {
+      const oldIndex = self.cp.getCurrentSlideIndex();
 
-    // toggle next and prev buttons
-    this.toggleNextAndPreviousButtonDisabled(index);
+      // update current progress task
+      self.updateSlideTitle(index, { isCurrent: true });
+
+      // update old progress task
+      self.updateSlideTitle(oldIndex, { isCurrent: false });
+
+      // toggle next and prev buttons
+      self.toggleNextAndPreviousButtonDisabled(index);
+    });
   };
 
   /**
@@ -323,7 +325,7 @@ const NavigationLine = (function ($) {
       'aria-disabled': 'true'
     }).appendTo($centerFooter);
 
-    addClickAndKeyboardListeners(this.cp.$prevSlideButton, () => this.cp.previousSlide());
+    addClickAndKeyboardListeners(this.cp.$prevSlideButton, () => this.cp.previousSlide(undefined, false));
 
     const $slideNumbering = $('<div/>', {
       'class': 'h5p-footer-slide-count'
@@ -368,7 +370,7 @@ const NavigationLine = (function ($) {
       'tabindex': '0'
     }).appendTo($centerFooter);
 
-    addClickAndKeyboardListeners(this.cp.$nextSlideButton, () => this.cp.nextSlide());
+    addClickAndKeyboardListeners(this.cp.$nextSlideButton, () => this.cp.nextSlide(undefined, false));
 
     // *********************
     // Right footer elements

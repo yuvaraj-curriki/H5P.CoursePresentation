@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Aller à la diapositive",
-                      "description": "N'est appliquable qu'avec le bouton 'Le numéro de diapositive spécifique' séléctionné"
+                      "description": "N'est applicable que si le bouton 'Le numéro de diapositive spécifique' est sélectionné"
                     },
                     {
                       "label": "Invisible",
@@ -73,8 +73,7 @@
                     "description": "Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
                   },
                   {
-                    "label": "Sélectionnez une couleur",
-                    "default": ""
+                    "label": "Sélectionnez une couleur"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
             },
             {
-              "label": "Sélectionnez une couleur",
-              "default": ""
+              "label": "Sélectionnez une couleur"
             }
           ]
         }
@@ -232,16 +230,16 @@
           "default": "Imprimer la diapositive courante"
         },
         {
-          "label": "Etiquette pour des diapositives sans intitulé",
+          "label": "Étiquette pour des diapositives sans intitulé",
           "default": "Sans intitulé"
         },
         {
           "label": "Explication de la navigation par diapositive pour les technologies d'assistance",
-          "default": "Utilisez les fleches gauche et droite pour pour naviguer entre les diapositives"
+          "default": "Utilisez les flèches gauche et droite pour pour naviguer entre les diapositives"
         },
         {
           "label": "Etiquette de champs pour les technologies d'assistance",
-          "default": "Le champs de présentation. Utilisez les fleches gauche et droite pour naviguer entre les diapositives."
+          "default": "Zone de présentation. Utilisez les flèches gauche et droite pour naviguer entre les diapositives."
         },
         {
           "label": "Etiquette pour des interactions incomplètes",
@@ -252,15 +250,15 @@
           "default": "@slideName ccontient des interactions complètes"
         },
         {
-          "label": "Etiquette pour le compteur de diapositive. Variables sont @index, @total",
+          "label": "Étiquette pour le compteur de diapositive. Variables sont @index, @total",
           "default": "Diapositive a @index de @total"
         },
         {
-          "label": "Etiquette pour les diapositives qui n'ont que de réponses correctes",
+          "label": "Étiquette pour les diapositives qui n'ont que de réponses correctes",
           "default": "toutes les réponses sont bonnes sur @slideName"
         },
         {
-          "label": "Etiquette pour les diapositives qui ont des réponses incorrectes",
+          "label": "Étiquette pour les diapositives qui ont des réponses incorrectes",
           "default": "@slideName contient des réponses incorrectes"
         },
         {
@@ -268,17 +266,29 @@
           "default": "Partager le résultat"
         },
         {
-          "label": "Total score announcement for assistive technologies",
-          "default": "You got @score of @maxScore points in total",
+          "label": "Annonce de score total pour les technologies d'accessibilité",
+          "default": "Vous avez obtenu @score sur @maxScore points au total",
           "description": "Available variables are @score and @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Annonce d'activation du mode plein-écran pour les technologies d'accessibilité",
+          "default": "Mode plein-écran activé"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Annonce de désactivation du mode plein-écran pour les technologies d'accessibilité",
+          "default": "Mode plein-écran désactivé"
+        },
+        {
+          "label": "Entête du dialogue de confirmation d'envoi des réponses",
+          "default": "Envoyer vos réponses"
+        },
+        {
+          "label": "Texte du dialogue de confirmation d'envoi des réponses",
+          "default": "Cette action va envoyer vos réponses, voulez-vous continuer?"
+        },
+        {
+          "label": "Bouton de confirmation  du dialogue de confirmation d'envoi des réponses",
+          "default": "Envoyer et voir les résultats"
         }
       ]
     },
@@ -319,12 +329,12 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Afficher le bouton \"Afficher la solution\" dans la diapositive de résumé",
+          "description": "Si activé, l'apprenant pourra afficher toutes les réponses lorsqu'il arrivera à la diapositive Résumé."
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Afficher le bouton \"Réessayer\" dans la diapositive de résumé",
+          "description": "Si activé, l'apprenant pourra réessayer toutes les questions lorsqu'il arrivera à la diapositive Résumé. Veuillez noter que l'apprenant peut réessayer les questions même si cette option n'est pas activée en utilisant le bouton Rafraîchir de son navigateur."
         },
         {
           "label": "Activer le bouton \"Imprimer\"",

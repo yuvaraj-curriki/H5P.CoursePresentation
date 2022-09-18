@@ -46,6 +46,7 @@ let CoursePresentation = function (params, id, extras) {
     this.previousState = extras.previousState;
     this.standalone = extras.standalone;
     this.isReportingEnabled = extras.isReportingEnabled || extras.isScoringEnabled;
+    this.title = (extras.metadata && extras.metadata.title) ? extras.metadata.title : 'Course Presentation';
   }
 
   this.currentSlideIndex = (this.previousState && this.previousState.progress) ? this.previousState.progress : 0;
@@ -2309,6 +2310,15 @@ CoursePresentation.prototype.triggerConsumedEventForReadOnly = function (library
     type: 'slide',
     value: slide
   };
+};
+
+/**
+ * Get title, e.g. for xAPI
+ *
+ * @return {string} Title.
+ */
+CoursePresentation.prototype.getTitle = function () {
+  return H5P.createTitle(this.title);
 };
 
 export default CoursePresentation;

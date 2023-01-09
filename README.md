@@ -1,7 +1,7 @@
 H5P Course Presentation
 ==========
 
-Combine texts, multimedia and tasks into a presentation.
+Combine texts, multimedia and tasks into a presentation test.
 
 [See it in action on H5P.org](https://h5p.org/presentation)
 
